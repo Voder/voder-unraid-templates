@@ -1,0 +1,27 @@
+<Container>
+  <Name>Akkudoktor EOS</Name>
+  <Repository>akkudoktor/eos:latest</Repository>
+  <Registry>https://hub.docker.com/r/akkudoktor/eos</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/Akkudoktor-EOS/EOS/issues</Support>
+  <Project>https://github.com/Akkudoktor-EOS/EOS</Project>
+  <Overview>EOS optimizes energy distribution, usage for batteries, heat pumps & household devices. It includes predictive models for electricity prices (planned), load forecasting & dynamic optimization to maximize energy efficiency & minimize costs. Founder Dr. Andreas Schmitz (YouTube @akkudoktor). This is the official Docker image for EOS.</Overview>
+  <Category>Utilities:Battery, Tools:Monitoring</Category>
+  <WebUI>http://[IP]:[PORT:8503]</WebUI>
+  <Icon>https://raw.githubusercontent.com/Akkudoktor-EOS/EOS/main/docs/_static/logo.png</Icon>
+
+  <!-- Exposed Ports -->
+  <Config Name="Web Interface" Target="8503" Default="8503" Mode="tcp" Description="Dashboard" Display="always" Required="true" Mask="false" />
+  <Config Name="API Interface" Target="8504" Default="8504" Mode="tcp" Description="API" Display="always" Required="false" Mask="false" />
+
+  <!-- Volumes -->
+  <Config Name="MPLCONFIGDIR" Target="/tmp/mplconfigdir" Default="/mnt/user/appdata/eos/mplconfigdir" Type="Path" Mode="rw" Description="Matplotlib config cache" Display="advanced" Required="false" Mask="false" />
+  <Config Name="EOS_CACHE_DIR" Target="/opt/eos/cache" Default="/mnt/user/appdata/eos/cache" Type="Path" Mode="rw" Description="EOS cache directory" Display="always" Required="false" Mask="false" />
+  <Config Name="EOS_OUTPUT_DIR" Target="/opt/eos/output" Default="/mnt/user/appdata/eos/output" Type="Path" Mode="rw" Description="EOS output directory" Display="always" Required="false" Mask="false" />
+  <Config Name="EOS_CONFIG_DIR" Target="/opt/eos/config" Default="/mnt/user/appdata/eos/config" Type="Path" Mode="rw" Description="EOS configuration directory" Display="always" Required="false" Mask="false" />
+
+  <!-- Environment Variables -->
+  <Config Name="EOS_SERVER__EOSDASH_SESSKEY" Target="EOS_SERVER__EOSDASH_SESSKEY" Default="s3cr3t" Mode="env" Description="Session key for EOS dashboard (should be changed in production)" Display="always" Required="false" Mask="true" />
+
+</Container>
